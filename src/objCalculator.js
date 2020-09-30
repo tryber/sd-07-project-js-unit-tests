@@ -20,5 +20,8 @@
 */
 
 const calculator = {};
-
+calculator.add = (firstNumber, secondNumber) => firstNumber + secondNumber;
+calculator.mult = (firstNumber, secondNumber) => firstNumber * secondNumber;
+calculator.div = (firstNumber, secondNumber) => Math.floor(firstNumber / secondNumber);
+calculator.sub = (firstNumber, secondNumber) => firstNumber - secondNumber;
 module.exports = calculator;
