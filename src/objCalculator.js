@@ -19,6 +19,23 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+const calculator = {
+  add: (a, b) => {
+    if (!a || !b) return undefined;
+    return a + b;
+  },
+  mult: (a, b) => {
+    if (!a || !b) return undefined;
+    return a * b;
+  },
+  div: (a, b) => {
+    if (!a || !b || b === 0) return undefined;
+    return Math.floor(a / b);
+  },
+  sub: (a, b) => {
+    if (!a || !b) return undefined;
+    return a - b;
+  },
+};
 
 module.exports = calculator;
