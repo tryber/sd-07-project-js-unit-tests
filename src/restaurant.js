@@ -66,11 +66,36 @@
 // const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`. Essa função deve ser associada à chave `order` de `restaurant`
 // ```
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
-
 //------------------------------------------------------------------------------------------
-
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`, soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
-
-const createMenu = () => {};
-
+// { food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}
+const createMenu = (item) => {
+  const menu = { fetchMenu: item,
+    consumption: [],
+    order: createOrder = (item2) => {
+      menu.consumption.push(item2);
+      return menu;
+    },
+    pay: payFunction = () => {
+      let total = 0;
+      const items = menu.consumption;
+      const comida = Object.keys(menu.fetchMenu.food);
+      const precoComida = Object.values(menu.fetchMenu.food);
+      const bebida = Object.keys(menu.fetchMenu.drink);
+      const precoBebida = Object.values(menu.fetchMenu.drink);
+      for (let i = 0; i < items.length; i += 1) {
+        if (comida.includes(items[i])) {
+          total += precoComida[comida.indexOf(items[i])];
+        } else if (bebida.includes(items[i])) {
+          total += precoBebida[bebida.indexOf(items[i])];
+        }
+      }
+      return total;
+    },
+  };
+  return menu;
+};
+// console.log (createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}}))
+// console.log(createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}}).fetchMenu.food)
+// console.log (createMenu({ food: {'coxinha': 3.9, 'sopa': 9.9}, drink: {'agua': 3.9, 'cerveja': 6.9}}).order('agua').order('coxinha').order('coxinha').pay());
 module.exports = createMenu;
