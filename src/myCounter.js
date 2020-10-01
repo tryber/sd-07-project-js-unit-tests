@@ -17,8 +17,8 @@
 
 const myCounter = () => {
   var myArray = [];
-  for (var counter = 0; counter <= 3; counter += 1) {
-    myArray.push(counter);
+  for (var counter1 = 0; counter1 <= 3; counter1 += 1) {
+    myArray.push(counter1);
     for (var counter = 2; counter <= 3; counter += 1) {
       myArray.push(counter);
     }
@@ -27,3 +27,5 @@ const myCounter = () => {
 };
 
 module.exports = myCounter;
+
+console.log(myCounter());
