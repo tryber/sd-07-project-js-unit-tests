@@ -16,6 +16,11 @@
       #VQV!'
 */
 
-const vqv = (nome, idade) => {};
+const vqv = (nome, idade) => {
+  // solução de string vazia/espaços em brancos achado no link -> https://bit.ly/2HDlTVi
+  if (typeof nome !== 'string' || !/\S/.test(nome)) return undefined;
+  if (typeof idade !== 'number') return undefined;
+  return `Oi, meu nome é ${nome}!\nTenho ${idade} anos,\ntrabalho na Trybe e mando muito em programação!\n#VQV!`;
+};
 
 module.exports = vqv;
