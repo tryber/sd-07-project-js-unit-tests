@@ -12,6 +12,38 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+function arrayOfNumbers(array) {
+  if (array.length === 0) return false;
+  for (let i = 0; i < array.length; i += 1) {
+    if (typeof array[i] !== 'number' || isNaN(array[i]) || array.length === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+const average = (array) => {
+  // add your implementation here
+  let sum = 0;
+  if (arrayOfNumbers(array)) {
+    for (let i = 0; i < array.length; i += 1) {
+      sum += array[i];
+    }
+    return Math.round(sum / array.length);
+  }
+  return undefined;
+};
+console.log(average([3, 4, 5]));
+console.log(average([1, 2, 3, '4', 5]));
+console.log(average([0, 0, 0, 0, 0, 0, 0]));
+console.log(average([1, 2, '3']));
+console.log(average([1, 2, 3]));
+console.log(average([0, 0, 0, 0, 0, 0, 1]));
+console.log(average([]));
+console.log(average([' ']));
+console.log(average(['um', 'dois', 'tres']));
+console.log(average([47, 63, 122]));
+console.log(average([-11, 2, 5]));
+console.log(average([-11, -5, 2]));
 
 module.exports = average;

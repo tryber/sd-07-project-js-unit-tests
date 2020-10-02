@@ -27,5 +27,18 @@ const circle = (radius) => {
     circumference: 2 * PI * radius,
   };
 };
+const PI = 3.14;
+console.log(typeof circle(7));
+console.log(Object.keys(circle(1)).length);
+console.log(circle());
+console.table(circle(2));
+console.table(circle(3));
+console.log(circle(3).area);
+
+console.log(parseFloat((0.2 + 0.1).toPrecision(2)));
+console.log((0.2 + 0.1).toPrecision(2));
+console.log(0.2 + 0.1);
+console.log(2 * PI * 3);
+console.log(parseFloat((PI * 3 * 3).toFixed(2)));
 
 module.exports = circle;
