@@ -19,6 +19,31 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+const calculator = {
+  add: (primeiroNumero, segundoInteiro) => {
+    if (typeof primeiroNumero === 'string' && typeof segundoInteiro === 'string') {
+      throw new Error('São strings');
+    }
+    return primeiroNumero + segundoInteiro;
+  },
+  div: (primeiroNumero, segundoInteiro) => {
+    if (typeof primeiroNumero === 'string' && typeof segundoInteiro === 'string') {
+      throw new Error('São strings');
+    }
+    return Math.floor(primeiroNumero / segundoInteiro);
+  },
+  mult: (primeiroNumero, segundoInteiro) => {
+    if (typeof primeiroNumero === 'string' && typeof segundoInteiro === 'string') {
+      throw new Error('São strings');
+    }
+    return primeiroNumero * segundoInteiro;
+  },
+  sub: (primeiroNumero, segundoInteiro) => {
+    if (typeof primeiroNumero === 'string' && typeof segundoInteiro === 'string') {
+      throw new Error('São strings');
+    }
+    return primeiroNumero - segundoInteiro;
+  },
+};
 
 module.exports = calculator;

@@ -1,12 +1,13 @@
 /* eslint-disable max-len*/
 /* eslint-disable no-unused-vars */
 
-const assert = require('assert');
-const productDetails = require('../src/productDetails');
+const assert = require("assert");
+const productDetails = require("../src/productDetails");
 
 /*
-  Dadas duas strings que representam nomes de produtos, retorne um array contendo dois objetos com os detalhes dos respectivos produtos.
-
+  Dadas duas strings que representam nomes de produtos, 
+  retorne um array contendo dois objetos com os detalhes dos respectivos produtos.
+ 
   Parâmetros:
   - Uma string;
   - Uma string;
@@ -33,7 +34,23 @@ const productDetails = require('../src/productDetails');
 
 describe('#productDetails', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
+    assert.deepStrictEqual(
+      productDetails('Alcool gel', 'Máscara'),
+      [
+        { details: { productId: 'Alcool gel123' }, name: 'Alcool gel' },
+        { details: { productId: 'Máscara123' }, name: 'Máscara' },
+      ],
+      'Não é um array',
+    );
+    const product = productDetails('Alcool gel', 'Máscara');
+    assert.strictEqual(typeof product[0], 'object', 'Não é um objeto');
+    assert.strictEqual(typeof product[1], 'object', 'Não é um objeto');
+    assert.strictEqual(product[0] !== product[1], true, 'Não é um objeto');
+
+    const produtoID1 = product[0].details.productId;
+    const produtoID2 = product[1].details.productId;
+
+    assert.strictEqual(produtoID1.replace(/\D/gim, '') === produtoID2.replace(/\D/gim, ''), true, 'Não é igual');
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste que o retorno da função é um array.
     // Teste que o array retornado pela função contém dois itens dentro.
