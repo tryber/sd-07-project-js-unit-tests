@@ -19,6 +19,32 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+const calculator = {
 
+  add: (num1, num2) => {
+    const numero1 = num1;
+    const numero2 = num2;
+
+    return (numero1 + numero2);
+  },
+  mult: (num1, num2) => {
+    const numero1 = num1;
+    const numero2 = num2;
+    return (numero1 * numero2);
+  },
+  div: (num1, num2) => {
+    const numero1 = num1;
+    const numero2 = num2;
+    return Math.floor(numero1 / numero2);
+  },
+  sub: (num1, num2) => {
+    const numero1 = num1;
+    const numero2 = num2;
+    return (numero1 - numero2);
+  },
+};
+console.log(calculator.add(1, 2));
+console.log(calculator.div(1, 2));
+console.log(calculator.mult(1, 2));
+console.log(calculator.sub(1, 2));
 module.exports = calculator;
