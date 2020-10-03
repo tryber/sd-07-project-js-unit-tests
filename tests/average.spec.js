@@ -1,7 +1,8 @@
-/* eslint-disable max-len */
+(numbers/* eslint-disable max-len */
 
 const assert = require('assert');
 const average = require('../src/average');
+const numbers = require('../src/numbers');
 
 /*
   A função average recebe um array (tamanho variável) e retorna a média dos valores recebidos.
