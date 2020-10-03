@@ -19,6 +19,24 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+const calculator = {
+  add: (first, second) => {
+    const result = parseInt(first + second, 10);
+    return result;
+  },
+  mult: (thisrd, fourth) => {
+    const result = parseInt(thisrd * fourth, 10);
+    return result;
+  },
+  div: (fiveth, sixth) => {
+    const result = parseInt(fiveth / sixth, 10);
+    return result;
+  },
+  sub: (seventh, eighth) => {
+    const result = parseInt(seventh - eighth, 10);
+    return result;
+  },
+
+};
 
 module.exports = calculator;
