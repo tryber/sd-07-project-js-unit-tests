@@ -51,7 +51,24 @@ const createMenu = require('../src/restaurant');
 
 describe('#createMenu', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
+    assert.deepStrictEqual(`fetchMenu: ${typeof createMenu({any: 'any',}).fetchMenu}`, `fetchMenu: object`);
+    assert.deepStrictEqual(Object.keys(createMenu({ food: {}, drink: {} }).fetchMenu), ['food', 'drink']);
+    assert.deepStrictEqual(createMenu({ food: {}, drink: {} }).fetchMenu, { food: {}, drink: {} });
+    assert.deepStrictEqual(createMenu({ food: {}, drink: {} }).consumption, []);
+    const obj = createMenu({ food: { coxinha: 1.50, sopa: 2.40, sashimi: 10.50, }, drink: { agua: 1.20 } });
+    obj.order('coxinha');
+    assert.deepStrictEqual(obj.consumption, ['coxinha']);
+    obj.order('agua');
+    obj.order('sopa');
+    obj.order('sashimi');
+    assert.deepStrictEqual(obj.consumption, ['coxinha', 'agua', 'sopa', 'sashimi']);
+    obj.order('sopa');
+    assert.deepStrictEqual(obj.consumption, ['coxinha', 'agua', 'sopa', 'sashimi', 'sopa']);
+    assert.strictEqual(obj.pay(), 18);
+
+
+
+    
     // TESTE 1: Verifique que, dado um objeto qualquer passado como um parâmetro para a função createMenu(), checa se o retorno da função é um objeto no seguinte formato: { fetchMenu: objetoQualquer }.
     // ```
     // createMenu(objetoQualquer) // Retorno: { fetchMenu: objetoQualquer }
