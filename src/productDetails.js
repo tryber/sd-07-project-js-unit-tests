@@ -8,15 +8,15 @@
 
   Comportamento:
   productDetails('Alcool gel', 'Máscara') // Retorna:
-  [
+ let teste = [
     {
-      name: 'Alcool gel'
+      name: 'Alcool gel',
       details: {
         productId: 'Alcool gel123'
       }
     },
     {
-      name: 'Máscara'
+      name: 'Máscara',
       details: {
         productId: 'Máscara123'
       }
