@@ -1,5 +1,7 @@
 /* eslint-disable max-len */
 
+// const { parse } = require('acorn');
+
 /*
   Você é responsável por escrever o código do sistema de pedidos de um restaurante. Deve ser possível, através desse sistema, cadastrar um menu. Dado que um menu foi cadastrado, o sistema deve disponibilizar um objeto através do qual se consegue:
   - ler o menu cadastrado;
@@ -71,6 +73,26 @@
 
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`, soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+const createMenu = (object) => {
+  const obj = {
+    fetchMenu: object,
+    consumption: [],
+    order(str) {
+      this.consumption.push(str);
+    },
+    pay() {
+      let amount = 0;
+      const tenPercent = 1.1;
+      this.consumption.forEach((item) => {
+        const checkFoods = item in this.fetchMenu.food;
+        const checkDrinks = item in this.fetchMenu.drinks;
+        if (checkFoods) amount += this.fetchMenu.food[item];
+        if (checkDrinks) amount += this.fetchMenu.drinks[item];
+      });
+      return parseFloat(amount * tenPercent).toPrecision(4);
+    },
+  };
+  return obj;
+};
 
 module.exports = createMenu;
