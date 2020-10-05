@@ -15,6 +15,14 @@
     estudante.feedback() // Retorna: 'Eita pessoa boa!'
 */
 
-const createStudent = () => {};
-
+const createStudent = (input) => {
+  const object = { name: input,
+    feedback: () => {
+      const text = 'Eita pessoa boa!';
+      return text;
+    },
+    //Por que essa virgula code climate?
+  };
+  return object;
+};
 module.exports = createStudent;
