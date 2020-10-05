@@ -44,7 +44,7 @@
 */
 
 // PASSO 1: Crie uma função `createMenu()` que, dado um objeto passado por parâmetro, retorna um objeto com o seguinte formato: { fetchMenu: objetoPassadoPorParametro }.
-//
+
 // Agora faça o TESTE 2 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
@@ -63,7 +63,7 @@
 //
 // const createMenu = (myMenu) => // Lógica que edita o objeto `restaurant`
 //
-// const orderFromMenu = (request) => // Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`. Essa função deve ser associada à chave `order` de `restaurant`
+// Lógica que adiciona à chave `consumption` de `restaurant` a string recebida no parâmetro `request`. Essa função deve ser associada à chave `order` de `restaurant`
 // ```
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
 
@@ -71,6 +71,38 @@
 
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`, soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+let restaurant = {};
+let sum = 0;
+
+const orderFunction = (request) => {
+  restaurant.consumption.push(request);
+  return restaurant;
+};
+
+const payFunction = (item) => {
+  const getMenuFoodAs = (restaurant.fetchMenu.food);
+  const getMenuDrinkAs = (restaurant.fetchMenu.drink);
+  const getTotalMenu = Object.assign({}, getMenuFoodAs, getMenuDrinkAs);
+  for (let i = 0; i < (Object.keys(getTotalMenu).length); i += 1) {
+    if (item === Object.keys(getTotalMenu)[i]) {
+      sum += Object.values(getTotalMenu)[i];
+    }
+  }
+  return sum;
+};
+
+const createMenu = (myMenu) => {
+  restaurant = {
+    fetchMenu: myMenu,
+    consumption: [],
+    order: orderFunction,
+    pay: () => {
+      const orderConsumption = restaurant.consumption;
+      orderConsumption.forEach(payFunction);
+      return sum * 1.1;
+    },
+  };
+  return restaurant;
+};
 
 module.exports = createMenu;
