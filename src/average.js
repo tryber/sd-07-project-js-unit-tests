@@ -12,6 +12,17 @@
     - average([1, '2']) // Retorno: undefined;
 */
 
-const average = () => {};
+const average = (array) => {
+  const verifyNumbers = array.every(numero => typeof (numero) === 'number');
+  if (verifyNumbers === false || array.length === 0) {
+    return undefined;
+  }
+  const averageMath = array.reduce((n1, n2) => n2 + n1, 0) / array.length;
+  return Math.round(averageMath);
+};
 
 module.exports = average;
+
+/* Fonte: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+https://www.youtube.com/watch?v=g1C40tDP0Bk
+*/
