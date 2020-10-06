@@ -30,15 +30,38 @@ const productDetails = require('../src/productDetails');
 
   OBS: Lembre-se que você não precisa se preocupar com o describe e o it por enquanto, isso será aprendido posteriormente.
 */
+const compareProductIDLastNumbers = (parameter1, parameter2) => {
+  const arr = productDetails(parameter1, parameter2);
+  const object1 = arr[0].details.productId.endsWith('123');
+  const object2 = arr[1].details.productId.endsWith('123');
+  return object1 && object2;
+};
 
 describe('#productDetails', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
     // ESCREVA SEUS TESTES ABAIXO:
     // Teste que o retorno da função é um array.
+    assert.strictEqual(typeof productDetails('produto1', 'produto2'), 'object');
     // Teste que o array retornado pela função contém dois itens dentro.
+    assert.deepStrictEqual(productDetails('produto1', 'produto2').length, 2);
     // Teste que os dois itens dentro do array retornado pela função são objetos.
+    assert.deepStrictEqual(
+      typeof productDetails('produto1', 'produto2')[0] &&
+        typeof productDetails('produto1', 'produto2')[1],
+      'object'
+    );
     // Teste que os dois objetos são diferentes entre si.
+    assert.deepStrictEqual(
+      productDetails('produto1', 'produto2')[0] ===
+        productDetails('produto1', 'produto2')[1],
+      false
+    );
     // (Difícil) Teste que os dois productIds terminam com 123.
+    assert.deepStrictEqual(
+      compareProductIDLastNumbers('leonardo', 'sardinha'),
+      true
+    );
   });
 });
+
+// (productDetails("produto1", "produto2")[0]).details.productId.substr((productDetails("produto1", "produto2")[0]).details.productId.length-3)===(productDetails("produto1", "produto2")[1]).details.productId.substr((productDetails("produto1", "produto2")[1]).details.productId.length-3)
