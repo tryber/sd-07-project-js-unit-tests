@@ -15,6 +15,17 @@
     estudante.feedback() // Retorna: 'Eita pessoa boa!'
 */
 
-const createStudent = () => {};
+const createStudent = (studentName) => {
+  const firstFeedback = () => 'Eita pessoa boa!';
+
+  const estudante = {
+    name: studentName,
+    feedback: firstFeedback,
+    //para o teste funcionar como typeOf estudante.feedback = 'function',
+    //não deve-se chamar a função firstFeedback()
+  };
+
+  return estudante;
+};
 
 module.exports = createStudent;
