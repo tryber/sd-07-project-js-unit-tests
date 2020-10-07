@@ -10,11 +10,16 @@
     - Uma string;
   Comportamento:
     const estudante = createStudent('Leandrão, o Lobo Solitário')
-
     estudante.name // Retorna: 'Leandrão, o Lobo Solitário'
     estudante.feedback() // Retorna: 'Eita pessoa boa!'
 */
 
-const createStudent = () => {};
+const createStudent = (firstname) => {
+  const student = {
+    name: firstname,
+    feedback: () => 'Eita pessoa boa!',
+  };
+  return (student);
+};
 
 module.exports = createStudent;

@@ -71,6 +71,94 @@
 
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`, soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// const itensMenu = {
+//   food: { coxinha: 3.90, sanduiche: 9.90 },
+//   drinks: { agua: 3.90, cerveja: 6.90 },
+// };
+
+// ====================================================
+// === Essa função foi a que fiz originalmente
+// === Mas ela ficou muito complexa, por isso criei
+// === a funçao addConsumedValue
+// ====================================================
+// function sumConsumption(menu) {
+//   let total = 0;
+
+//   // Retorna um array com os produtos consumidos
+//   const consumed = menu.consumption;
+
+//   // O menu é dividido em grupos (no caso testado 'food' e 'drinks')
+//   // Retorna um array com os grupos do menu
+//   const group = Object.keys(menu.fetchMenu);
+
+//   for (let i = 0; i < consumed.length; i += 1) {
+//     for (let j = 0; j < group.length; j += 1) {
+//       // Retorna um array com os itens vendidos em cada grupo
+//       const products = Object.keys(menu.fetchMenu[group[j]]);
+//       for (let k = 0; k < products.length; k += 1) {
+//         if (consumed[i] === products[k]) {
+//           total += menu.fetchMenu[group[j]][products[k]];
+//         }
+//       }
+//     }
+//   }
+//   const tenPercent = total * 0.1;
+
+//   // o toFixed converte um numero para string com N casas decimais
+//   // o parseFloat foi usado pra converter novamente o número em float
+//   return (parseFloat((total + tenPercent).toFixed(2)));
+// }
+function addConsumedValue(menu, group, products, consumed) {
+  let total = 0;
+  for (let k = 0; k < products.length; k += 1) {
+    if (consumed === products[k]) {
+      total += menu.fetchMenu[group][products[k]];
+    }
+  }
+  return (total);
+}
+
+const createMenu = (obj) => {
+  const menu = {
+    fetchMenu: obj,
+    consumption: [],
+    order: text => menu.consumption.push(text),
+    pay: () => {
+      let total = 0;
+
+      // Retorna um array com os produtos consumidos
+      const consumed = menu.consumption;
+
+      // O menu é dividido em grupos (no caso testado 'food' e 'drinks')
+      // Retorna um array com os grupos do menu
+      const group = Object.keys(menu.fetchMenu);
+
+      for (let i = 0; i < consumed.length; i += 1) {
+        for (let j = 0; j < group.length; j += 1) {
+          // Retorna um array com os itens vendidos em cada grupo
+          const products = Object.keys(menu.fetchMenu[group[j]]);
+          total += addConsumedValue(menu, group[j], products, consumed[i]);
+        }
+      }
+      const tenPercent = total * 0.1;
+      // o toFixed converte um numero para string com N casas decimais
+      // o parseFloat foi usado pra converter novamente o número em float
+      return (parseFloat((total + tenPercent).toFixed(2)));
+    },
+  };
+
+  return (menu);
+};
+
+
+// contaCliente = createMenu(itensMenu);
+// contaCliente.order('coxinha');
+// contaCliente.order('agua');
+// contaCliente.order('coxinha');
+// console.log(contaCliente.pay());
+// contaCliente.order('cerveja')
+// console.table(contaCliente)
+// console.log(contaCliente.consumption);
+
 
 module.exports = createMenu;
