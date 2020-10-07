@@ -24,14 +24,36 @@ const circle = require('../src/circle');
 */
 
 describe('#circle', () => {
-  it('given a radius, should return an object with circles info', () => {
-    assert.fail();
-    // ESCREVA SEUS TESTES ABAIXO:
-    // Teste se circle retorna um objeto.
-    // Teste se o objeto retornado tem 3 entradas.
-    // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
-    // Teste que a função retorna, dentro de um objeto, a circunferência correta para um círculo de raio 2.
-    // Teste que a função retorna, dentro de um objeto, a área correta para um círculo de raio 3.
-    // Teste que a função retorna, num objeto, os dados corretos de um círculo de raio 3.
-  });
+    it('given a radius, should return an object with circles info', () => {
+        assert
+
+
+        // ESCREVA SEUS TESTES ABAIXO:
+        // Teste se circle retorna um objeto.
+        circletype = typeof(circle(1))
+        assert.strictEqual(circletype, 'object');
+
+        // Teste se o objeto retornado tem 3 entradas.
+        entries = Object.entries(circle(1)).length;
+        assert.strictEqual(entries, 3);
+        //referencia Object.entries: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
+
+        // Teste se a função, quando não recebe nenhum parâmetro, retorna undefined.
+        assert.strictEqual(circle(), undefined);
+
+        // Teste que a função retorna, dentro de um objeto, a circunferência correta para um círculo de raio 2.
+        assert.strictEqual(circle(2).circumference, 12.56)
+            // Teste que a função retorna, dentro de um objeto, a área correta para um círculo de raio 3.
+        assert.strictEqual(circle(3).area, 28.259999999999998)
+            // Teste que a função retorna, num objeto, os dados corretos de um círculo de raio 3.
+        circletype = typeof(circle(3))
+        assert.strictEqual(circletype, 'object');
+        assert.strictEqual(circle(3).radius, 3)
+        assert.strictEqual(circle(3).area, 28.259999999999998)
+        assert.strictEqual(circle(3).circumference, 18.84)
+
+
+    });
 });
+
+//referencias para os métodos assert: https://nodejs.org/dist/latest-v14.x/docs/api/assert.html
