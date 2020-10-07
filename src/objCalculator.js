@@ -19,6 +19,39 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+const rounddown = val => Math.floor(val);
+
+const add = (val1, val2) => {
+  rounddown(val1);
+  rounddown(val2);
+  return val1 + val2;
+};
+
+const mult = (val1, val2) => {
+  rounddown(val1);
+  rounddown(val2);
+  return val1 * val2;
+};
+
+const div = (val1, val2) => {
+  rounddown(val1);
+  rounddown(val2);
+  let divresult = val1 / val2;
+  divresult = Math.floor(divresult);
+  return divresult;
+};
+
+const sub = (val1, val2) => {
+  rounddown(val1);
+  rounddown(val2);
+  return val1 - val2;
+};
+
+const calculator = {
+  add,
+  mult,
+  div,
+  sub,
+};
 
 module.exports = calculator;
