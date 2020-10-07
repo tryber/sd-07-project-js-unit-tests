@@ -11,7 +11,18 @@
     - average([1, 1]) // Retorno: 1;
     - average([1, '2']) // Retorno: undefined;
 */
+const isNumber = require('./numbers');
 
-const average = () => {};
+const average = (numbers) => {
+  if ((!(isNumber(numbers)) || numbers.length === 0)) {
+    return undefined;
+  }
+  let sum = 0;
+  numbers.forEach((number) => {
+    sum += Math.round(number);
+  });
+  const resultAverage = Math.round(sum / numbers.length);
+  return resultAverage;
+};
 
 module.exports = average;
