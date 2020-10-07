@@ -16,6 +16,15 @@
       #VQV!'
 */
 
-const vqv = (nome, idade) => {};
+const vqv = (nome, idade) => {
+  // adicionado uma condição para saber ser é string ou number
+  if (typeof nome !== 'string' || typeof idade !== 'number') {
+    return undefined;
+  }
+  // criar um const para colocar uma frase
+  const phrase = `Oi, meu nome é ${nome}!\nTenho ${idade} anos,\ntrabalho na Trybe e mando muito em programação!\n#VQV!`;
+  // retorna o variavel constante com a frase
+  return phrase;
+};
 
 module.exports = vqv;
