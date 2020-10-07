@@ -71,6 +71,32 @@
 
 // PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`, soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = () => {};
+// const objetoQualquer = {
+//   food: {'coxinha': 3.90, 'sanduiche': 9.90},
+//   drink: {'agua': 3.90, 'cerveja': 6.90}
+// };
+const createMenu = function createMenu(objetoQualquer) {
+  return {
+    fetchMenu: objetoQualquer,
+    consumption: [],
+    order(item) { this.consumption.push(item); },
+    pay() {
+      const sum = this.consumption.reduce((acc, value) => {
+        switch (true) {
+          case (Object.keys(objetoQualquer.food).includes(value)):
+            return acc + objetoQualquer.food[value];
+          case (Object.keys(objetoQualquer.drink).includes(value)):
+            return acc + objetoQualquer.drink[value];
+          default:
+            break;
+        }
+        return acc;
+      }, 0);
+      return sum * 1.1;
+    },
+  };
+};
+// passo 4 https://medium.com/@raullesteves/javascript-entendendo-o-reduce-de-uma-vez-por-todas-c4cbaa16e380
+// passo 4 https://github.com/tryber/sd-06-project-js-unit-tests/tree/6aa598f35797a0ffb6e96f460419646eadda1c65
 
 module.exports = createMenu;
