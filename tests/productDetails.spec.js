@@ -1,7 +1,9 @@
+const { strictEqual } = require('assert');
 /* eslint-disable max-len*/
 /* eslint-disable no-unused-vars */
 
 const assert = require('assert');
+const { type } = require('os');
 const productDetails = require('../src/productDetails');
 
 /*
@@ -33,12 +35,10 @@ const productDetails = require('../src/productDetails');
 
 describe('#productDetails', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
-    // ESCREVA SEUS TESTES ABAIXO:
-    // Teste que o retorno da função é um array.
-    // Teste que o array retornado pela função contém dois itens dentro.
-    // Teste que os dois itens dentro do array retornado pela função são objetos.
-    // Teste que os dois objetos são diferentes entre si.
-    // (Difícil) Teste que os dois productIds terminam com 123.
+    assert.strictEqual(typeof productDetails("Agua", "Mineral"), "object");
+    assert.strictEqual(productDetails().length, 2);
+    assert.strictEqual(typeof productDetails[1],typeof productDetails[2]);
+    assert.notDeepStrictEqual(productDetails("Agua", "Mineral")[1], productDetails("Agua", "Mineral")[2]);
+    assert.strictEqual(productDetails("Agua", "Mineral")[0].details.productId.replace("Agua",""), productDetails("Agua", "Mineral")[1].details.productId.replace("Mineral",""));
   });
 });
