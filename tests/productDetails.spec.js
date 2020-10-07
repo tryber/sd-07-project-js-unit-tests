@@ -33,12 +33,42 @@ const productDetails = require('../src/productDetails');
 
 describe('#productDetails', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
-    // ESCREVA SEUS TESTES ABAIXO:
+    let returned = typeof productDetails('param1', 'param2');
+    let expected = 'object';
+    assert.deepStrictEqual(returned, expected);
     // Teste que o retorno da função é um array.
+    returned = Object.entries(productDetails('param1', 'param2')).length;
+    expected = 2;
+    assert.strictEqual(returned, expected);
     // Teste que o array retornado pela função contém dois itens dentro.
+    returned = [typeof productDetails('param1', 'param2')[0], typeof productDetails('param1', 'param2')[1]];
+    expected = ['object', 'object']
+    assert.deepStrictEqual(returned, expected);
     // Teste que os dois itens dentro do array retornado pela função são objetos.
+    returned = productDetails('param1', 'param2')[0];
+    expected = productDetails('param1', 'param2')[1];
+    assert.notDeepStrictEqual(returned, expected);
     // Teste que os dois objetos são diferentes entre si.
+    let funcaor = () => {
+      let count = productDetails('param1', 'param2');
+      let backArr = [];
+    
+      for (let i = 0; i < count.length; i += 1) {
+        let funcao = Object.values(count[i].details.productId);
+        let contador = funcao.length - 3;
+        for (let i = 0; i < contador; i += 1) {    
+          funcao.shift();
+        }
+    
+        backArr.push(funcao[0] + funcao[1] + funcao[2]);
+      }
+    
+      return backArr;
+    
+    };
+    returned = funcaor();
+    expected = ['123', '123'];
+    assert.deepStrictEqual(returned, expected);
     // (Difícil) Teste que os dois productIds terminam com 123.
   });
 });
