@@ -19,6 +19,16 @@
   calculator.div(3, 2) // Retorno: 1;
 */
 
-const calculator = {};
+const addIntegers = (n1, n2) => n1 + n2;
+const multIntegers = (n1, n2) => n1 * n2;
+const divIntegers = (n1, n2) => Math.trunc(n1 / n2);
+const subIntegers = (n1, n2) => n1 - n2;
+
+const calculator = {
+  add: addIntegers,
+  mult: multIntegers,
+  div: divIntegers,
+  sub: subIntegers,
+};
 
 module.exports = calculator;
