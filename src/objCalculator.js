@@ -21,4 +21,9 @@
 
 const calculator = {};
 
+calculator.add = (valorA, valorB) => valorA + valorB;
+calculator.mult = (valorA, valorB) => valorA * valorB;
+calculator.div = (valorA, valorB) => Math.floor(valorA / valorB);
+calculator.sub = (valorA, valorB) => valorA - valorB;
+
 module.exports = calculator;
