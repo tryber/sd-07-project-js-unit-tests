@@ -27,5 +27,10 @@ const circle = (radius) => {
     circumference: 2 * PI * radius,
   };
 };
+// console.log(circle(3));
+// console.log(typeof circle(5));
+// console.log(Object.entries(circle(5)).length);
+// console.log(Object.values(circle(2))[1]);
+console.log(parseFloat(Object.values(circle(3))[1].toPrecision(17)));
 
 module.exports = circle;
