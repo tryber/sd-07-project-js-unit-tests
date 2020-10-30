@@ -25,9 +25,13 @@ describe('#createStudent', () => {
   it('returns the object as specified', () => {
     const estudante = createStudent('Leandrão, o Lobo Solitário');
     assert.strictEqual(typeof estudante, 'object');
+    //testa se o tipo estudante e um objeto
     assert.strictEqual(typeof estudante.feedback, 'function');
+    //retorna se a existe uma função detro do objeto
     assert.strictEqual(estudante.name, 'Leandrão, o Lobo Solitário');
+    //testa se puxar a key name do obejeto retora a string declarada
     assert.strictEqual(estudante.feedback(), 'Eita pessoa boa!');
+    //testa se quando a função dentro do objeto e chamda retora a string declarada
 
     const estudante2 = createStudent('Nobre');
     assert.strictEqual(typeof estudante2, 'object');
