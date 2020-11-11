@@ -45,6 +45,7 @@ describe('#vqv', () => {
         'trabalho na Trybe e mando muito em programação!\n' +
         '#VQV!',
     );
+
     assert.strictEqual(vqv(), undefined);
   });
 });
