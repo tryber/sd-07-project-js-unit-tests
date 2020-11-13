@@ -68,9 +68,67 @@
 // Agora faça o TESTE 6 no arquivo `tests/restaurant.spec.js`.
 
 //------------------------------------------------------------------------------------------
+//
+// PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`, soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`. // a função fetchMenu só faz buscar o menu
+const pay = (dataMenu, dataConsumption) => {
+  let totalToPay = 0;
+  const consumedItens = dataConsumption;
+  const foodProducts = Object.entries(dataMenu.food);
+  const drinkProducts = Object.entries(dataMenu.drink);
+  const productsSalled = foodProducts.concat(drinkProducts);
+  // for (let i = 0; i < consumedItens.length; i += 1) {
+  //   for (let a = 0; a < productsSalled.length; a += 1) {
+  //     if (consumedItens[i] === productsSalled[a][0]) {
+  //       totalToPay += productsSalled[a][1];
+  //     }
+  //   }
+  // }
+  consumedItens.forEach((item) => {
+    productsSalled.forEach((product) => {
+      if (item === product[0]) totalToPay += product[1];
+    });
+  });
+  return parseFloat((totalToPay * 1.1).toFixed(2));
+};
+const createMenu = (menu) => {
+  const object = {
 
-// PASSO 4: Adicione ao objeto retornado por `createMenu()` uma chave `pay` com uma função que varre todo os itens de `objetoRetornado.consumption`, soma o preço de todos checando-os no menu e retorna o valor somado acrescido de 10%. DICA: para isso, você precisará varrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
+    fetchMenu: menu,
 
-const createMenu = () => {};
+    consumption: [],
 
+    order: (item) => {
+      object.consumption.push(item);
+      return object.consumption;
+    },
+
+    pay: () => pay(object.fetchMenu, object.consumption),
+
+  };
+  return object;
+};
+// let menu = {
+//   food: {'coxinha': 3.9, 'sopa': 9.9},
+//   drink: {'agua':3.9, 'cerveja':6.9}
+// }
+// const returnedObject = createMenu(menu);
+// console.log(returnedObject.order("coxinha"));
 module.exports = createMenu;
+// pay: () => {
+//   let totalToPay = 0;
+//   const consumedItens = object.consumption;
+//   const foodProducts = Object.entries(object.food);
+//   const productsSalled = foodProducts.concat(object.drink);
+//     for (let i = 0; i < consumedItens.length; i += 1) {
+//     for (let a = 0; a < productsSalled.length; a += 1) {
+//       if (consumedItens[i] === productsSalled[a][0]) {
+//         totalToPay += productsSalled[a][1];
+//       }
+//     }
+// //     return parseFloat((totalToPay * 1.1).toFixed(2));
+//
+// food: {'coxinha': 3.9, 'sopa': 9.9},
+// //   drink: {'agua':3.9, 'cerveja':6.9}
+// foodProducts = [['coxinha', 3.9], ['sopa',9.9]]
+// //   drink: {'agua':3.9, 'cerveja':6.9}
+// productsSalled = [['coxinha', 3.9], ['sopa',9.9], ['agua',3.9], ['cerveja',6.9]]
