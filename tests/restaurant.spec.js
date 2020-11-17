@@ -51,13 +51,13 @@ const createMenu = require('../src/restaurant');
 
 describe('#createMenu', () => {
   it('tests the function has the correct behaviour', () => {
-    assert.fail();
     // TESTE 1: Verifique que, dado um objeto qualquer passado como um parâmetro para a função createMenu(), checa se o retorno da função é um objeto no seguinte formato: { fetchMenu: objetoQualquer }.
     // ```
     // createMenu(objetoQualquer) // Retorno: { fetchMenu: objetoQualquer }
     // ```
     // Agora faça o PASSO 1 no arquivo `src/restaurant.js`.
     // --------------------------------------------------------------------------------------
+    assert.deepStrictEqual(createMenu({}).fetchMenu, {});
     // TESTE 2: Verifique que, dado que a função createMenu foi chamada com o objeto: `{ food: {}, drink: {} }`, verifique que 'objetoRetornado.fetchMenu' retorna um objeto cujas chaves são somente `food` e `drink`.
     // ```
     // const objetoRetornado = createMenu(objetoQualquer);
@@ -65,6 +65,7 @@ describe('#createMenu', () => {
     // ```
     // Agora faça o TESTE 3 deste arquivo.
     // --------------------------------------------------------------------------------------
+    assert.deepStrictEqual(createMenu({food: {}, drink: {}}).fetchMenu, {food: {}, drink: {}});
     // TESTE 3: Verifique que o menu passado pra função createMenu é identico ao menu recuperado pela função 'objetoRetornado.fetchMenu'
     // ```
     // const objetoRetornado = createMenu(objetoQualquer);
@@ -72,6 +73,9 @@ describe('#createMenu', () => {
     // ```
     // Agora faça o TESTE 4 deste arquivo.
     // --------------------------------------------------------------------------------------
+    assert.deepStrictEqual(createMenu({food: {'coxinha': 3.90, 'sanduiche': 9.90},
+    drinks: {'agua': 3.90, 'cerveja': 6.90}}).fetchMenu, {food: {'coxinha': 3.90, 'sanduiche': 9.90},
+    drinks: {'agua': 3.90, 'cerveja': 6.90}});
     // TESTE 4: Verifique que 'objetoRetornado.consumption', após a criação do menu, retorna um array vazio.
     // ```
     // const objetoRetornado = createMenu(objetoQualquer);

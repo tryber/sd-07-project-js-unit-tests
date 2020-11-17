@@ -39,4 +39,7 @@ const productDetails = (firstProduct, secondProduct) => [
   },
 ];
 
+console.log(productDetails('um', 'dois')[0].details.productId);
+console.log(productDetails('um').includes('123', [[0].details]));
+
 module.exports = productDetails;
